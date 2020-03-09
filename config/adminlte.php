@@ -30,8 +30,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'img/logo.png',
+    'logo' => '<b>Loja</b>Virtual',
+    'logo_img' => 'img/logo.jpeg',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

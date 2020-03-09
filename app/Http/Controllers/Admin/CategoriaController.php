@@ -41,20 +41,42 @@ class CategoriaController extends Controller
         //
     }
 
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $retorno = CategoriaService::getCategoriaPorId($id);
+
+        if ($retorno['status']){
+            return view('admin.categoria.form',[
+                'categoria' => $retorno['categoria']
+            ]);
+        }
+        return back()->witnFalha('Ocorreu u erro ao selecionar a categoria');
+
     }
 
    
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        $retorno =  CategoriaService::update($request->all(), $id);
+
+        if ($retorno['status']){
+            return redirect()->route('admin.categoria.index')
+                    ->withSucesso('Categoria atualizada com sucesso');
+
+        }
+        return back()->withInput()
+                ->withFalha('Ocorreu um erro ao atualizar');
     }
 
  
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+      $categoria = CategoriaService::destroy($id);
+
+        if ($categoria['status']){
+            return 'Categoria excluida com sucesso';
+        }
+
+        abort(403,'Erro ao excluir,' .$categoria['erro']);
     }
 }
