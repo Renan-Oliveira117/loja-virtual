@@ -20,33 +20,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Favicon
-    |--------------------------------------------------------------------------
-    |
-    | Here you can activate the favicon.
-    |
-    | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#62-favicon
-    |
-    */
-
-    'use_ico_only' => false,
-    'use_full_favicon' => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Logo
     |--------------------------------------------------------------------------
     |
     | Here you can change the logo of your admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#63-logo
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#62-logo
     |
     */
 
     'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -60,7 +45,7 @@ return [
     | Here we change the layout of your admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#64-layout
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#63-layout
     |
     */
 
@@ -78,7 +63,7 @@ return [
     | Here you can change the look and behavior of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#65-classes
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#64-classes
     |
     */
 
@@ -101,7 +86,7 @@ return [
     | Here we can modify the sidebar of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#66-sidebar
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#65-sidebar
     |
     */
 
@@ -123,7 +108,7 @@ return [
     | Here we can modify the right sidebar aka control sidebar of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#67-control-sidebar-right-sidebar
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#66-control-sidebar-right-sidebar
     |
     */
 
@@ -133,7 +118,7 @@ return [
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
     'right_sidebar_scrollbar_theme' => 'os-theme-light',
-    'right_sidebar_scrollbar_auto_hide' => 'l',
+    'right_sidebar_scrollbar_auto_hide' => '1',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +128,7 @@ return [
     | Here we can modify the url settings of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#68-urls
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#67-urls
     |
     */
 
@@ -169,7 +154,7 @@ return [
     | Here we can enable the Laravel Mix option for the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#69-laravel-mix
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#68-laravel-mix
     |
     */
 
@@ -183,7 +168,7 @@ return [
     | Here we can modify the sidebar/top navigation of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#610-menu
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#69-menu
     |
     */
 
@@ -213,6 +198,7 @@ return [
             'url'         => 'admin/user',
             'icon'        => 'fas fa-users',
         ],
+       
     ],
 
     /*
@@ -223,7 +209,7 @@ return [
     | Here we can modify the menu filters of the admin panel.
     |
     | For more detailed instructions you can look here:
-    | https://github.com/jeroennoten/Laravel-AdminLTE/#611-menu-filters
+    | https://github.com/jeroennoten/Laravel-AdminLTE/#610-menu-filters
     |
     */
 
@@ -262,18 +248,23 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js'
+                    'location' => '//cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => '/vendor/datatables/buttons.server-side.js' 
-
+                    'location' => '/vendor/datatables/buttons.server-side.js',
                 ],
+                
                 [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.jsdelivr.net/npm/axios/dist/axios.min.js',
                 ],
                 [
                     'type' => 'css',
@@ -341,17 +332,5 @@ return [
                 ],
             ],
         ],
-        [
-            'name' => 'axios',
-            'active' => true,
-            'files' =>[
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '//unpkg.com/axios/dist/axios.min.js'
-                ]
-             
-            ],
-        ]
     ],
 ];
