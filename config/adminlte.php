@@ -191,7 +191,7 @@ return [
         [
             'text'        => 'Vendas',
             'url'         => 'admin/venda',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-chart-bar',
         ],
         [
             'text'        => 'Usuários',
