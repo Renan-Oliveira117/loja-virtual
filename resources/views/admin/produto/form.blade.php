@@ -25,19 +25,23 @@
                     @error('descricao') <span class= "text-danger">{{ $message}}</span> @enderror
                 </div>
                 <div class="form-group">
-                    {!! Form::label('imagem', 'Imagem')!!}
-                    {!! Form::text('imagem',null, ['class'=>'form-control','required']) !!}
-                    @error('imagem') <span class= "text-danger">{{ $message}}</span> @enderror
-                </div>
-                <div class="form-group">
                     {!! Form::label('preco', 'Preço')!!}
                     {!! Form::text('preco',null, ['class'=>'form-control','required']) !!}
                     @error('preco') <span class= "text-danger">{{ $message}}</span> @enderror
                 </div>
                 <div class="form-group">
                     {!! Form::label('estoque', 'Estoque')!!}
-                    {!! Form::text('estoque',null, ['class'=>'form-control','required']) !!}
+                    {!! Form::number('estoque',null, ['class'=>'form-control','required']) !!}
                     @error('estoque') <span class= "text-danger">{{ $message}}</span> @enderror
+                </div>
+                <div class="custom-file">
+                    {!! Form::label('imagem', 'Imagem')!!}
+                    {!! Form::file('imagem',null, ['class'=>'custom-file-input','required']) !!}
+                    @error('imagem') <span class= "text-danger">{{ $message}}</span> @enderror
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Categorias</label>
+                    <select class="form-control" name="categorias[]" id="select-categorias"></select>
                 </div>
 
                 {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
@@ -52,5 +56,42 @@
 @stop
 
 @section('js')
-  
+  <script>
+      var catSelecionadas= [];
+
+      @isset($produto)
+        @foreach($produto->categorias as $cat)
+            var c ={
+                id:  {{$cat->id}},
+                text: '{{$cat->nome}}',
+                selected: true
+            }
+            catSelecionadas.push(c);
+        @endforeach
+    @endisset
+
+    $('#select-categorias').select2({
+        placeholder: 'Listar de categorias',
+        multiple: true,
+        data: catSelecionadas,
+        ajax:{
+            url: '{{ route('admin.lista.categorias')}}',
+            dataType:'json',
+            data: function (params){
+                return {
+                    searchTerm: params.term
+            
+                };
+            },
+            processResults: function (response)
+
+                return{
+                    results: response
+                };
+        },
+
+    }
+
+});
+</script>
 @stop

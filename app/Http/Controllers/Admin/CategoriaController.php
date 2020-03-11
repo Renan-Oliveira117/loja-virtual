@@ -79,4 +79,10 @@ class CategoriaController extends Controller
 
         abort(403,'Erro ao excluir,' .$categoria['erro']);
     }
+
+    public function listarCategorias(Request $request)
+    {
+        return CategoriaService::listarCategorias($request);
+    }
+
 }

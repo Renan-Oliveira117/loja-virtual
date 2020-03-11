@@ -17,7 +17,7 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('descricao',300);
-            $table->string('imagem');
+            $table->text('imagem')->nullable();
             $table->double('preco',10,2);
             $table->integer('estoque');
             

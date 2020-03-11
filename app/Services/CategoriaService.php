@@ -71,4 +71,17 @@ class CategoriaService
             ];
         }
     }
+
+    public static function listarCategorias($request)
+    {
+        $termoPesquisa = trim($request->searchTerm);
+
+        if(empty($termoPesquisa)){
+            return Categoria::select('id', 'nome as text')->get();
+        }
+
+        return Categoria::select('id', 'nome as text')
+                            ->where('nome', 'like', '%' .$termoPesquisa . '%')
+                            ->get();
+    }
 }

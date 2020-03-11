@@ -22,14 +22,7 @@ class ProdutoDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query) 
-
-            ->editColumn('created_at', function($produto){
-                return $produto->created_at->format('d/m/Y');
-            })
-            ->editColumn('updated_at', function($produto){
-                return $produto->updated_at->format('d/m/Y');
-            })
-
+            
             ->addColumn('action', function($produto){
 
                 $acoes = link_to(
@@ -84,11 +77,10 @@ class ProdutoDataTable extends DataTable
                   ->exportable(false)
                   ->printable(false),
             Column::make('id'),
-            Column::make('nome')->text('Nome'),
-            Column::make('preco')->text('Preço'),
-            Column::make('estoque')->text('Estoque'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('nome'),
+            Column::make('preco')->title('Preço'),
+            Column::make('estoque'),
+
             
         ];
     }
