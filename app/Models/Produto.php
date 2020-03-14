@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ['id'];
+    protected $casts = [
+        'preco' => 'double',
+    ];
 
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class);
     }
+
 }

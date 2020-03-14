@@ -10,9 +10,9 @@
         <div class="card-body">
 
             @if(isset($produto))
-                {!! Form::model($produto,['url' => route('admin.produto.update' ,$produto), 'method'=>'put'])!!}
+                {!! Form::model($produto,['url' => route('admin.produto.update' ,$produto), 'method'=>'put','files' => 'true'])!!}
             @else 
-                {!! Form::open(['url'=>route('admin.produto.store')])!!}
+                {!! Form::open(['url'=>route('admin.produto.store'),'files' => 'true'])!!}
             @endif
                 <div class="form-group">
                     {!! Form::label('nome', 'Nome')!!}
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('descricao', 'Descrição')!!}
-                    {!! Form::text('descricao',null, ['class'=>'form-control','required']) !!}
+                    {!! Form::textArea('descricao',null, ['class'=>'form-control','required']) !!}
                     @error('descricao') <span class= "text-danger">{{ $message}}</span> @enderror
                 </div>
                 <div class="form-group">
@@ -34,16 +34,16 @@
                     {!! Form::number('estoque',null, ['class'=>'form-control','required']) !!}
                     @error('estoque') <span class= "text-danger">{{ $message}}</span> @enderror
                 </div>
-                <div class="custom-file">
-                    {!! Form::label('imagem', 'Imagem')!!}
-                    {!! Form::file('imagem',null, ['class'=>'custom-file-input','required']) !!}
-                    @error('imagem') <span class= "text-danger">{{ $message}}</span> @enderror
+                <div class="form-group">
+                    {!! Form::label('imagem_temp', 'Imagem') !!}
+                    {!! Form::file('imagem_temp', ['class' => 'form-control', $produto ?? 'required']) !!}
+                    @error('imagem_temp') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Categorias</label>
                     <select class="form-control" name="categorias[]" id="select-categorias"></select>
                 </div>
-
+                
                 {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                 {!! Form::close() !!}
 
@@ -71,7 +71,7 @@
     @endisset
 
     $('#select-categorias').select2({
-        placeholder: 'Listar de categorias',
+        placeholder: 'Lista de categorias',
         multiple: true,
         data: catSelecionadas,
         ajax:{
@@ -83,7 +83,7 @@
             
                 };
             },
-            processResults: function (response)
+            processResults: function (response){
 
                 return{
                     results: response

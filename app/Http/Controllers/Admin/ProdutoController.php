@@ -21,54 +21,54 @@ class ProdutoController extends Controller
         return view('admin.produto.form');
     }
 
-
-    public function store (ProdutoRequest $request)
+    public function store(Request $request)
     {
-        $produto = ProdutoService::store($request->all());
+        $retorno = ProdutoService::store($request->all());
 
-        if ($produto['status']){
+        if ($retorno['status']) {
             return redirect()->route('admin.produto.index')
-                                ->withSucesso('Produto salvo com sucesso');
+                    ->withSucesso('Produto salvo com sucesso');
         }
+
         return back()->withInput()
-                    ->withFalha('Ocorreu um erro ao salvar');
+                ->withFalha('Ocorreu um erro ao salvar');
     }
 
     public function edit($id)
     {
-        $produto = ProdutoService::getProdutoPorId($id);
+        $retorno = ProdutoService::getProdutoPorId($id);
 
-        if($produto['status']){
-            return view('admin.produto.form',[
-            'produto' => $produto['produto']
+        if ($retorno['status']) {
+            return view('admin.produto.form', [
+                'produto' => $retorno['produto']
             ]);
         }
 
-        return back()->withFalha('Ocorreu erro ao selecionar o produto');
-    } 
+        return back()->withFalha('Ocorreu um erro ao selecionar o produto');
+    }
 
-    public function update(ProdutoRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $produto = ProdutoService::update($request->all(), $id);
+        $retorno = ProdutoService::update($request->all(), $id);
 
-        if($produto['status'])
-        {
+        if ($retorno['status']) {
             return redirect()->route('admin.produto.index')
-                ->withSucesso('Produto atualizado com sucesso');
+                    ->withSucesso('Produto atualizado com sucesso');
         }
 
         return back()->withInput()
-                    ->withFalha('Ocorreu um erro ao atualizar');
+                ->withFalha('Ocorreu um erro ao atualizar');
     }
 
     public function destroy($id)
     {
-        $produto = ProdutoService:: destroy($id);
+        $retorno = ProdutoService::destroy($id);
 
-        if ($produto['status']){
-            return 'Produto excluido com sucesso';
+        if ($retorno['status']) {
+            return 'Produto excluído com sucesso';
         }
-        abort(403,'Erro ao excluir,' .$produto['erro']);
+
+        abort(403, 'Erro ao excluir, ' . $retorno['erro']);
     }
 
 }
