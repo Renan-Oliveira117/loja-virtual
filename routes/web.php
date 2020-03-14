@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes([
     'register' => false
 ]);
+
+Route::namespace('Publico')->name('publico.')->group(function (){
+
+    Route::get('/', 'LojaController@index')->name('loja');
+    Route::resource('carrinho', 'CategoriaController');
+    Route::get('categoria/{id}', 'CategoriaController@index')->name('categoria');
+    Route::resource('conta', 'ContaController');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -107,6 +107,11 @@ class ProdutoService
 
         return $imagem;
     }
+    
+    public static function listaProdutos()
+    {
+        return Produto::paginate(4); 
+    }
 
     
 }

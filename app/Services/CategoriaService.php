@@ -4,10 +4,16 @@
 namespace App\Services;
 
 use App\Models\Categoria;
+use App\Models\Produto;
 use Exception;
 
 class CategoriaService
 {
+
+    public static function categorias()
+    {
+        return Categoria::all();
+    }
 
     public static function store($request)
     {
@@ -84,4 +90,5 @@ class CategoriaService
                             ->where('nome', 'like', '%' .$termoPesquisa . '%')
                             ->get();
     }
+
 }
