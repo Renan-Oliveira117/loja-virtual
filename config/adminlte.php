@@ -332,5 +332,16 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'axios',
+            'active' =>true,
+            'files' =>[
+                [
+                    'type' => 'js',
+                    'asset' => 'true',
+                    'location' => '/js/axios.min.js'
+                ]
+            ]
+        ]
     ],
 ];
