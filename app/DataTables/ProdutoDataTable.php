@@ -66,7 +66,7 @@ class ProdutoDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create')->text('Novo Usuário'),
+                        Button::make('create')->text('Novo Produto'),
                         Button::make('export')->text('Exportar'),
                         Button::make('print')->text('Imprimir'),
                       

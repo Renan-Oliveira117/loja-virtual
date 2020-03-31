@@ -71,7 +71,7 @@ class CategoriaDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create')->text('Novo Usuário'),
+                        Button::make('create')->text('Nova Categoria'),
                         Button::make('export')->text('Exportar'),
                         Button::make('print')->text('Imprimir')
                     )
